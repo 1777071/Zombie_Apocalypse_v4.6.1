@@ -1,56 +1,51 @@
 package tian.zombie.service;
-import org.apache.commons.lang3.StringUtils;
-import tian.zombie.entity.Creature;
-import tian.zombie.entity.Zombie;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import tian.zombie.entity.Coordinate;
+import tian.zombie.entity.Grid;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
+@RequiredArgsConstructor
+@ControllerAdvice
+@Service
 public class ReadParams {
-    public String getMove() {
-        Scanner sc = new Scanner(System.in);
-        return sc.nextLine();
-    }
-
-    public int getGrid() {
-        Scanner sc = new Scanner(System.in);
-        return Integer.parseInt(sc.nextLine());
-    }
-
-    public List<Zombie> getZombies() {
-        Scanner sc = new Scanner(System.in);
-        String[] zombieCollection = StringUtils.substringsBetween(sc.nextLine(),"(",")");
-        List<Zombie> zombies = new ArrayList<>();
-
-        try {
-            for (String s : zombieCollection) {
-                String[] position = s.split(",");
-                Zombie zombie = new Zombie();
-                zombie.setPositionX(Integer.parseInt(position[0]));
-                zombie.setPositionY(Integer.parseInt(position[1]));
-                zombies.add(zombie);
-            }
-        } catch (StringIndexOutOfBoundsException e) {
+    private final ZombieMovementRecorder zombieMovementRecorder;
+    public String[] getMove(String movement) {
+        try{
+            return movement.split("");
+        }catch (StringIndexOutOfBoundsException e){
             e.printStackTrace();
         }
+        return movement.split("");
+    }
 
+    public Grid getGrid(int gridSize, List<Coordinate> creatures) {
+        Grid grid = new Grid(gridSize);
+        for (Coordinate creature : creatures) {
+            grid = zombieMovementRecorder.recordCreature(grid, creature);
+        }
+        return grid;
+    }
+
+    public List<Coordinate> getZombies(List<Coordinate> originZombieList) {
+        List<Coordinate> zombies = new ArrayList<>();
+        try {
+            zombies.addAll(originZombieList);
+        } catch (UnsupportedOperationException e) {
+            e.printStackTrace();
+        }
         return zombies;
     }
 
-    public List<Creature> getCreatures() {
-        Scanner sc = new Scanner(System.in);
-        String[] creaturesCollection = StringUtils.substringsBetween(sc.nextLine(),"(",")");
-        List<Creature> creatures = new ArrayList<>();
+    public List<Coordinate> getCreatures(List<Coordinate> originCreatureList) {
+        List<Coordinate> creatures = new ArrayList<>();
         try {
-            for (String s : creaturesCollection) {
-                String[] position = s.split(",");
-                Creature creature = new Creature();
-                creature.setPositionX(Integer.parseInt(position[0]));
-                creature.setPositionY(Integer.parseInt(position[1]));
-                creatures.add(creature);
-            }
-        } catch (StringIndexOutOfBoundsException e) {
+            creatures.addAll(originCreatureList);
+        } catch (UnsupportedOperationException e) {
             e.printStackTrace();
         }
         return creatures;

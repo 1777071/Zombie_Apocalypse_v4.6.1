@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class Grid {
     private int gridSize;
-    private int [][] matrix;
+    private int[][] matrix;
 
     public Grid(int gridSize) {
         this.gridSize = gridSize;

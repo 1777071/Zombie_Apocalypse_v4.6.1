@@ -1,27 +1,25 @@
 package tian.zombie.service;
 
-import tian.zombie.entity.Creature;
-import tian.zombie.entity.Zombie;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import tian.zombie.entity.Coordinate;
+
 import java.util.List;
 
 @Slf4j
+@Service
 public class ResultPrinter {
-    public void zombiePrinter(List<Zombie> zombies){
+    public void zombiePrinter(List<Coordinate> zombies) {
         log.info("zombies’ positions: \n");
-        zombies.forEach((zombie) -> {
-            log.info("("+ zombie.getPositionX() + ","+ zombie.getPositionY() + ")");
-        });
+        zombies.forEach((zombie) -> log.info("(" + zombie.getPositionX() + "," + zombie.getPositionY() + ")"));
     }
 
-    public void creaturePrinter(List<Creature> creatures){
-        if(creatures.size() == 0){
+    public void creaturePrinter(List<Coordinate> creatures) {
+        log.info("creatures' position: \n");
+        if (creatures.size() == 0) {
             log.info("none");
             return;
         }
-        log.info("creatures' position: \n");
-        creatures.forEach((creature) -> {
-            log.info("("+ creature.getPositionX() + ","+ creature.getPositionY() + ")");
-        });
+        creatures.forEach((creature) -> log.info("(" + creature.getPositionX() + "," + creature.getPositionY() + ")"));
     }
 }
