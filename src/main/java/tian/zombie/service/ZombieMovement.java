@@ -12,10 +12,10 @@ import java.util.Map;
 public class ZombieMovement {
     @Autowired
     private Map<String, Coordinate> zombieMovingDirection;
+
     public void zombieMoving(Coordinate zombie, String direction, int gridSize) {
-        log.info(""+zombieMovingDirection.get(direction).getPositionX());
-        zombie.setPositionX(Math.floorMod(zombie.getPositionX()+zombieMovingDirection.get(direction).getPositionX(),gridSize));
-        zombie.setPositionY(Math.floorMod(zombie.getPositionY()+zombieMovingDirection.get(direction).getPositionY(),gridSize));
+        zombie.setPositionX(Math.floorMod(zombie.getPositionX() + zombieMovingDirection.get(direction).getPositionX(), gridSize));
+        zombie.setPositionY(Math.floorMod(zombie.getPositionY() + zombieMovingDirection.get(direction).getPositionY(), gridSize));
     }
 
 }

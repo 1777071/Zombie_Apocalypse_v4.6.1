@@ -14,10 +14,11 @@ import java.util.List;
 @Service
 public class ReadParams {
     private final ZombieMovementRecorder zombieMovementRecorder;
+
     public String[] getMove(String movement) {
-        try{
+        try {
             return movement.split("");
-        }catch (StringIndexOutOfBoundsException e){
+        } catch (StringIndexOutOfBoundsException e) {
             e.printStackTrace();
         }
         return movement.split("");

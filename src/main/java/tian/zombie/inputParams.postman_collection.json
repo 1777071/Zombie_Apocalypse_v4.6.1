@@ -1,0 +1,38 @@
+{
+	"info": {
+		"_postman_id": "5f2e7256-85da-4acc-aede-0515a98ab496",
+		"name": "inputParams",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8082/zombie/zombies",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"gridSize\": 4,\r\n  \"zombies\": [\r\n    {\r\n      \"positionX\": 3,\r\n      \"positionY\": 1\r\n    }\r\n  ],\r\n\r\n  \"creatures\": [\r\n    {\r\n      \"positionX\": 0,\r\n      \"positionY\": 1\r\n    },\r\n    {\r\n      \"positionX\": 1,\r\n      \"positionY\": 2\r\n    },\r\n    {\r\n      \"positionX\": 1,\r\n      \"positionY\": 1\r\n    }\r\n  ],\r\n  \"move\": \"RDRU\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/zombie/zombies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"zombie",
+						"zombies"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

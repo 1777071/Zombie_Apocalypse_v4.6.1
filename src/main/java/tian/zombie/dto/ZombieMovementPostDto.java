@@ -1,4 +1,5 @@
 package tian.zombie.dto;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import tian.zombie.entity.Coordinate;
