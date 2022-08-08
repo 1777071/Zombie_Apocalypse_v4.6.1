@@ -32,7 +32,7 @@ public class ZombieMovementTest {
         CreaturesLocationRecorder creaturesLocationRecorder = new CreaturesLocationRecorder();
         Grid grid = new Grid(4);
         Map<Coordinate,Creature> creatureLocation = creaturesLocationRecorder.recordCreatureLocation(grid, creatureList);
-        List<Zombie> zombiesFinalLocation =  zombieMovementRecorder.zombieMoving(zombieList,creatureList,creatureLocation,directions,grid);
+        List<Zombie> zombiesFinalLocation =  zombieMovementRecorder.zombieStartMoving(zombieList,creatureLocation,directions,grid);
         assertEquals(3,zombiesFinalLocation.size());
     }
 

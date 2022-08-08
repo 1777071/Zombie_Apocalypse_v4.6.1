@@ -35,10 +35,10 @@ public class ZombieController {
 
         Map<Coordinate,Creature> creatureLocation = creaturesLocationRecorder.recordCreatureLocation(grid, creatures);
 
-        List<Zombie> allZombies = zombieMovementRecorder.zombieMoving(zombies, creatures, creatureLocation, movement, grid);
+        List<Zombie> allZombies = zombieMovementRecorder.zombieStartMoving(zombies, creatureLocation, movement, grid);
 
         resultPrinter.zombiePrinter(allZombies);
-        resultPrinter.creaturePrinter(creatures);
+        resultPrinter.creaturePrinter(creatureLocation);
         return ResponseEntity.ok(null);
     }
 }
