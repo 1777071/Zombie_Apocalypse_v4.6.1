@@ -3,6 +3,8 @@ package tian.zombie.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import tian.zombie.entity.Coordinate;
+import tian.zombie.entity.Creature;
+import tian.zombie.entity.Zombie;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -15,10 +17,10 @@ public class ZombieMovementPostDto {
     private Integer gridSize;
 
     @NotNull
-    private List<Coordinate> zombies;
+    private List<Zombie> zombies;
 
     @NotNull
-    private List<Coordinate> creatures;
+    private List<Creature> creatures;
 
     @NotNull
     private String move;

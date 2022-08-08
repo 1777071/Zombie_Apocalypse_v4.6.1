@@ -8,29 +8,36 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import tian.zombie.dto.ZombieMovementPostDto;
 import tian.zombie.entity.Coordinate;
+import tian.zombie.entity.Creature;
 import tian.zombie.entity.Grid;
-import tian.zombie.service.ReadParams;
-import tian.zombie.service.ResultPrinter;
+import tian.zombie.entity.Zombie;
+import tian.zombie.service.CreaturesLocationRecorder;
+import tian.zombie.service.LocationPrinter;
 import tian.zombie.service.ZombieMovementRecorder;
 
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Controller
 @RequiredArgsConstructor
 public class ZombieController {
-    private final ReadParams readParams;
+    private final CreaturesLocationRecorder creaturesLocationRecorder;
     private final ZombieMovementRecorder zombieMovementRecorder;
-    private final ResultPrinter resultPrinter;
+    private final LocationPrinter resultPrinter;
 
     @PostMapping("/zombies")
     public ResponseEntity<Void> zombieStartMoving(@RequestBody ZombieMovementPostDto zombieMovementPostDto) {
-        List<Coordinate> zombies = readParams.getZombies(zombieMovementPostDto.getZombies());
-        List<Coordinate> creatures = readParams.getCreatures(zombieMovementPostDto.getCreatures());
-        String[] movement = readParams.getMove(zombieMovementPostDto.getMove());
-        Grid grid = readParams.getGrid(zombieMovementPostDto.getGridSize(), creatures);
-        zombieMovementRecorder.zombieMoving(zombies, creatures, movement, grid);
-        resultPrinter.zombiePrinter(zombies);
+        List<Zombie> zombies = zombieMovementPostDto.getZombies();
+        List<Creature> creatures = zombieMovementPostDto.getCreatures();
+        String movement = zombieMovementPostDto.getMove();
+        Grid grid = new Grid(zombieMovementPostDto.getGridSize());
+
+        Map<Coordinate,Creature> creatureLocation = creaturesLocationRecorder.recordCreatureLocation(grid, creatures);
+
+        List<Zombie> allZombies = zombieMovementRecorder.zombieMoving(zombies, creatures, creatureLocation, movement, grid);
+
+        resultPrinter.zombiePrinter(allZombies);
         resultPrinter.creaturePrinter(creatures);
         return ResponseEntity.ok(null);
     }
