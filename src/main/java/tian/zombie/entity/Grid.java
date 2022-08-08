@@ -14,15 +14,15 @@ public class Grid {
         this.matrix = new int[gridSize][gridSize];
     }
 
-    public boolean isCreatureExisting(Zombie zombie){
+    public boolean isCreatureExisting(Zombie zombie) {
         return matrix[zombie.getPosition().getPositionX()][zombie.getPosition().getPositionY()] == 1;
     }
 
-    public void removeCreatureFromGrid(Coordinate coordinate){
+    public void removeCreatureFromGrid(Coordinate coordinate) {
         matrix[coordinate.getPositionX()][coordinate.getPositionY()] = 0;
     }
 
-    public void recordCreatureLocationInGrid(Coordinate coordinate){
+    public void recordCreatureLocationInGrid(Coordinate coordinate) {
         matrix[coordinate.getPositionX()][coordinate.getPositionY()] = 1;
     }
 

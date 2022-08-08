@@ -26,7 +26,7 @@ public class Coordinate {
         return Objects.hash(positionX, positionY);
     }
 
-    public String printLocation(){
-        return "("+ positionX + ","+ positionY +")";
+    public String printLocation() {
+        return "(" + positionX + "," + positionY + ")";
     }
 }

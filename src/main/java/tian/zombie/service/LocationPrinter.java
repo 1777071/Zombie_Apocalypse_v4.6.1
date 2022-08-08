@@ -18,13 +18,13 @@ public class LocationPrinter {
         zombies.forEach((zombie) -> log.info(zombie.getPosition().printLocation()));
     }
 
-    public void creaturePrinter(Map<Coordinate,Creature> creatureLocation) {
+    public void creaturePrinter(Map<Coordinate, Creature> creatureLocation) {
         List<Creature> creatures = new ArrayList<>(creatureLocation.values());
         log.info("creatures' position: \n");
         if (creatures.size() == 0) {
             log.info("none");
             return;
         }
-       creatures.forEach((creature) -> log.info(creature.getPosition().printLocation()));
+        creatures.forEach((creature) -> log.info(creature.getPosition().printLocation()));
     }
 }

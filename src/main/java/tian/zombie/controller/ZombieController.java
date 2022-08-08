@@ -33,7 +33,7 @@ public class ZombieController {
         String movement = zombieMovementPostDto.getMove();
         Grid grid = new Grid(zombieMovementPostDto.getGridSize());
 
-        Map<Coordinate,Creature> creatureLocation = creaturesLocationRecorder.recordCreatureLocation(grid, creatures);
+        Map<Coordinate, Creature> creatureLocation = creaturesLocationRecorder.recordCreatureLocation(grid, creatures);
 
         List<Zombie> allZombies = zombieMovementRecorder.zombieStartMoving(zombies, creatureLocation, movement, grid);
 
