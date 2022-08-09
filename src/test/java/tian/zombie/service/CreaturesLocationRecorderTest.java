@@ -14,17 +14,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CreaturesLocationRecorderTest {
 
     @Test
-    void recordCreatureLocation(){
-        Creature creature1 = new Creature(new Coordinate(1,2));
-        Creature creature2 = new Creature(new Coordinate(2,3));
+    void recordCreatureLocation() {
+        Creature creature1 = new Creature(new Coordinate(1, 2));
+        Creature creature2 = new Creature(new Coordinate(2, 3));
         List<Creature> creatures = new ArrayList<>();
         creatures.add(creature1);
         creatures.add(creature2);
         CreaturesLocationRecorder creaturesLocationRecorder = new CreaturesLocationRecorder();
         Grid grid = new Grid(4);
-        Map<Coordinate,Creature> creatureLocation = creaturesLocationRecorder.recordCreatureLocation(grid, creatures);
+        Map<Coordinate, Creature> creatureLocation = creaturesLocationRecorder.recordCreatureLocation(grid, creatures);
         int[][] matrix = grid.getMatrix();
-        assertEquals(1,matrix[1][2]);
-        assertEquals(1,matrix[2][3]);
+        assertEquals(1, matrix[1][2]);
+        assertEquals(1, matrix[2][3]);
     }
 }

@@ -1,4 +1,5 @@
 package tian.zombie.service;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,20 +21,24 @@ public class ZombieMovementTest {
 
     @Test
     void zombieHorizontalMoving() {
-        Zombie zombie1 = new Zombie(new Coordinate(0,1));
-        List<Zombie> zombieList= new ArrayList<>();
+        Zombie zombie1 = new Zombie(new Coordinate(0, 1));
+        Zombie zombie2 = new Zombie(new Coordinate(0, 3));
+        List<Zombie> zombieList = new ArrayList<>();
         zombieList.add(zombie1);
-        Creature creature1 = new Creature(new Coordinate(3,1));
-        Creature creature2 = new Creature(new Coordinate(3,2));
+        zombieList.add(zombie2);
+        Creature creature1 = new Creature(new Coordinate(3, 1));
+        Creature creature2 = new Creature(new Coordinate(3, 2));
+        Creature creature3 = new Creature(new Coordinate(3, 0));
         List<Creature> creatureList = new ArrayList<>();
         creatureList.add(creature1);
         creatureList.add(creature2);
+        creatureList.add(creature3);
         String directions = "LD";
         CreaturesLocationRecorder creaturesLocationRecorder = new CreaturesLocationRecorder();
         Grid grid = new Grid(4);
-        Map<Coordinate,Creature> creatureLocation = creaturesLocationRecorder.recordCreatureLocation(grid, creatureList);
-        List<Zombie> zombiesFinalLocation =  zombieMovementRecorder.zombieStartMoving(zombieList,creatureLocation,directions,grid);
-        assertEquals(3,zombiesFinalLocation.size());
+        Map<Coordinate, Creature> creatureLocation = creaturesLocationRecorder.recordCreatureLocation(grid, creatureList);
+        List<Zombie> zombiesFinalLocation = zombieMovementRecorder.zombieStartMoving(zombieList, creatureLocation, directions, grid);
+        assertEquals(5, zombiesFinalLocation.size());
     }
 
 }

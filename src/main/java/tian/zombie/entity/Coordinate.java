@@ -13,6 +13,11 @@ public class Coordinate {
     private int positionX;
     private int positionY;
 
+    public Coordinate(Coordinate coordinate) {
+        this.positionX = coordinate.getPositionX();
+        this.positionY = coordinate.getPositionY();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

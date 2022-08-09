@@ -18,7 +18,8 @@ public class ZombieMovementRecorder {
 
     private void recordZombieInfection(Queue<Zombie> zombiesQueue, Map<Coordinate, Creature> creatureLocation, Zombie zombie, Grid grid) {
         if (grid.isCreatureExisting(zombie)) {
-            infectCreature(creatureLocation, zombie, grid, zombiesQueue);
+            Zombie newZombie = infectCreature(creatureLocation, zombie.getPosition(), grid);
+            zombiesQueue.add(newZombie);
         }
     }
 
@@ -36,12 +37,10 @@ public class ZombieMovementRecorder {
         return allZombie;
     }
 
-    private void infectCreature(Map<Coordinate, Creature> creatureLocation, Zombie zombie, Grid grid, Queue<Zombie> zombiesQueue) {
-        creatureLocation.remove(zombie.getPosition());
-        grid.removeCreatureFromGrid(zombie.getPosition());
-        Coordinate infectLocation = new Coordinate(zombie.getPosition().getPositionX(), zombie.getPosition().getPositionY());
-        Zombie newZombie = new Zombie(infectLocation);
-        zombiesQueue.add(newZombie);
-
+    private Zombie infectCreature(Map<Coordinate, Creature> creaturesLocation, Coordinate zombieLocation, Grid grid) {
+        creaturesLocation.remove(zombieLocation);
+        grid.removeCreatureFromGrid(zombieLocation);
+        Coordinate infectLocation = new Coordinate(zombieLocation);
+        return new Zombie(infectLocation);
     }
 }

@@ -38,7 +38,7 @@ public class ZombieController {
         List<Zombie> allZombies = zombieMovementRecorder.zombieStartMoving(zombies, creatureLocation, movement, grid);
 
         locationPrinter.printZombieLocation(allZombies);
-        locationPrinter.printeCreatureLocation(creatureLocation);
+        locationPrinter.printCreatureLocation(creatureLocation);
         return ResponseEntity.ok(null);
     }
 }

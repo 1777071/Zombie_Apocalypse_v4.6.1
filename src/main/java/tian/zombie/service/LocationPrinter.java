@@ -18,7 +18,7 @@ public class LocationPrinter {
         zombies.forEach((zombie) -> log.info(zombie.getPosition().printLocation()));
     }
 
-    public void printeCreatureLocation(Map<Coordinate, Creature> creatureLocation) {
+    public void printCreatureLocation(Map<Coordinate, Creature> creatureLocation) {
         List<Creature> creatures = new ArrayList<>(creatureLocation.values());
         log.info("creatures' position: \n");
         if (creatures.size() == 0) {
