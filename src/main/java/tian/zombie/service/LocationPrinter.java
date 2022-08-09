@@ -13,12 +13,12 @@ import java.util.Map;
 @Slf4j
 @Service
 public class LocationPrinter {
-    public void zombiePrinter(List<Zombie> zombies) {
+    public void printZombieLocation(List<Zombie> zombies) {
         log.info("zombies’ positions: \n");
         zombies.forEach((zombie) -> log.info(zombie.getPosition().printLocation()));
     }
 
-    public void creaturePrinter(Map<Coordinate, Creature> creatureLocation) {
+    public void printeCreatureLocation(Map<Coordinate, Creature> creatureLocation) {
         List<Creature> creatures = new ArrayList<>(creatureLocation.values());
         log.info("creatures' position: \n");
         if (creatures.size() == 0) {

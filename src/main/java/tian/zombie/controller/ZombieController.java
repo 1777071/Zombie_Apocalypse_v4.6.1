@@ -24,7 +24,7 @@ import java.util.Map;
 public class ZombieController {
     private final CreaturesLocationRecorder creaturesLocationRecorder;
     private final ZombieMovementRecorder zombieMovementRecorder;
-    private final LocationPrinter resultPrinter;
+    private final LocationPrinter locationPrinter;
 
     @PostMapping("/zombies")
     public ResponseEntity<Void> zombieStartMoving(@RequestBody ZombieMovementPostDto zombieMovementPostDto) {
@@ -37,8 +37,8 @@ public class ZombieController {
 
         List<Zombie> allZombies = zombieMovementRecorder.zombieStartMoving(zombies, creatureLocation, movement, grid);
 
-        resultPrinter.zombiePrinter(allZombies);
-        resultPrinter.creaturePrinter(creatureLocation);
+        locationPrinter.printZombieLocation(allZombies);
+        locationPrinter.printeCreatureLocation(creatureLocation);
         return ResponseEntity.ok(null);
     }
 }
