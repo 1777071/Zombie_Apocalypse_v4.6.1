@@ -27,11 +27,11 @@ public class ZombieMovementRecorder {
         List<Zombie> allZombie = new ArrayList<>();
         while (!zombiesQueue.isEmpty()) {
             Zombie zombie = zombiesQueue.poll();
-            allZombie.add(zombie);
             for (int j = 0; j < directions.length(); j++) {
                 zombie.move(zombieMovingDirection.get(directions.charAt(j)), grid.getGridSize());
                 recordZombieInfection(zombiesQueue, creatureLocation, zombie, grid);
             }
+            allZombie.add(zombie);
         }
         return allZombie;
     }
