@@ -59,5 +59,5 @@ none
 6. Use the postman to input the params like inputParams.postman_collection.json example
 7. The output would print in the console
 
-##Hightlight
+## Hightlight
 I set kinds of entities like zombie, coordinate and creature and fully used them. They make the whole structure clear and code readable and maintainable. In addition. I used Spring boot to create an application's backend. It could be much easier for future development like creating a webpage for the application and establishing a database.
